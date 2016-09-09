@@ -10,7 +10,7 @@ public class ClientHandler implements Runnable {
     public final long id;
     public final Socket socket;
     private BufferedReader in;
-    private PrintStream out;
+    private EncryptedPrintStream out;
     private final Server server;
     public final String username;
     public boolean active = false;
@@ -19,8 +19,8 @@ public class ClientHandler implements Runnable {
     protected ClientHandler(Socket s, long id, Server server) throws java.io.IOException {
         this.id = id;
         this.socket = s;
-        this.in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        this.out = new PrintStream(s.getOutputStream());
+        this.in = new BufferedReader(new InputStreamReader(new EncryptedInputStreamReader(s.getInputStream())));
+        this.out = new EncryptedPrintStream(s.getOutputStream());
         this.server = server;
         this.username = in.readLine();
         server.handle(username + " has joined the chat");
@@ -40,6 +40,8 @@ public class ClientHandler implements Runnable {
                         String msg = in.readLine();
                         server.handle(msg);
                         break;
+                    default:
+                        System.out.println("[uhoh]: "+cmd);
                 }
             } while (true);
         } catch (java.io.IOException ioe) {

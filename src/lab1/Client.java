@@ -14,7 +14,7 @@ public class Client implements Runnable {
     private Socket socket = null;
     private Thread thread = null;
     private DataOutputStream streamOut = null;
-    private PrintStream out;
+    private EncryptedPrintStream out;
     private BufferedReader in = null;
     //private ClientThread client = null;
     protected String username;
@@ -47,6 +47,8 @@ public class Client implements Runnable {
                         String msg = in.readLine();
                         frame.recieveMessage(msg);
                         break;
+                    default:
+                        System.out.println("[uhoh]: "+cmd);
                 }
             } while (true);
         } catch (IOException ioe) {
@@ -70,11 +72,11 @@ public class Client implements Runnable {
         //TODO Socket set up
         streamOut = new DataOutputStream(socket.getOutputStream());
 
-        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        in = new BufferedReader(new InputStreamReader(new EncryptedInputStreamReader(socket.getInputStream())));
         
-        out = new PrintStream(socket.getOutputStream());
+        out = new EncryptedPrintStream(socket.getOutputStream());
         
-        streamOut.write((username + "\n").getBytes(), 0, username.length() + 1);
+        out.println((username + "\n"));
         
         
         //Racers, start your engines!

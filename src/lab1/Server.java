@@ -12,7 +12,7 @@ public class Server implements Runnable {
 
     private ServerSocket serverSocket = null;
     private Thread mainThread = null;
-    private PrintStream log;
+    private CustomLogWriter log;
     private File file = new File("chat.txt");
     private PrintWriter writer;
     private ServerGUI frame;
@@ -65,7 +65,7 @@ public class Server implements Runnable {
         mainThread = new Thread(this);
         mainThread.start();
         clients = new ClientHandler[MAX_CLIENTS];
-        log = new PrintStream(new FileOutputStream(file));
+        log = new CustomLogWriter(new FileOutputStream(file));
     }
 
     public void stop() {
