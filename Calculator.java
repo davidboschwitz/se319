@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package coms319.proj1;
 
 import java.awt.EventQueue;
@@ -51,35 +46,35 @@ public class Calculator extends JPanel {
 
         textField1.setText("textField1");
 
-        button1.setText("button1");
+        button1.setText("CLEAR");
 
-        button2.setText("button2");
+        button2.setText("7");
 
-        button3.setText("button3");
+        button3.setText("4");
 
-        button4.setText("button4");
+        button4.setText("1");
 
-        button5.setText("button5");
+        button5.setText("button5 ");
 
-        button6.setText("button6");
+        button6.setText("button6 ");
 
-        button7.setText("button7");
+        button7.setText("button7 ");
 
-        button8.setText("button8");
+        button8.setText("2");
 
-        button9.setText("button9");
+        button9.setText("5");
 
-        button10.setText("button10");
+        button10.setText("8");
 
         button11.setText("button11");
 
         button12.setText("button12");
 
-        button13.setText("button13");
+        button13.setText("3");
 
-        button14.setText("button14");
+        button14.setText("6");
 
-        button15.setText("button15");
+        button15.setText("9");
 
         button16.setText("button16");
 
@@ -104,28 +99,28 @@ public class Calculator extends JPanel {
                                                 .addComponent(button2)
                                                 .addComponent(button3)
                                                 .addComponent(button4)
-                                                .addComponent(button5)
+                                                //.addComponent(button5)
                                                 .addComponent(button1))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button10)
                                                 .addComponent(button9)
                                                 .addComponent(button8)
-                                                .addComponent(button7)
+                                                //.addComponent(button7)
                                                 .addComponent(button6))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button15)
                                                 .addComponent(button14)
                                                 .addComponent(button13)
-                                                .addComponent(button12)
+                                               // .addComponent(button12)
                                                 .addComponent(button11))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button20)
                                                 .addComponent(button19)
                                                 .addComponent(button18)
-                                                .addComponent(button17)
+                                                //.addComponent(button17)
                                                 .addComponent(button16))
                                         .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
@@ -146,8 +141,8 @@ public class Calculator extends JPanel {
                                                 .addComponent(button3)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(button4)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(button5))
+                                                /*.addGap(18, 18, 18)
+                                              .addComponent(button5)*/)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(button6)
                                                 .addGap(18, 18, 18)
@@ -156,8 +151,8 @@ public class Calculator extends JPanel {
                                                 .addComponent(button9)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(button8)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(button7)))
+                                                /*.addGap(18, 18, 18)
+                                                .addComponent(button7)*/))
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(button11)
                                         .addGap(18, 18, 18)
@@ -166,8 +161,8 @@ public class Calculator extends JPanel {
                                         .addComponent(button14)
                                         .addGap(18, 18, 18)
                                         .addComponent(button13)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(button12))
+                                        /*.addGap(18, 18, 18)
+                                        .addComponent(button12)*/)
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(button16)
                                         .addGap(18, 18, 18)
@@ -176,8 +171,8 @@ public class Calculator extends JPanel {
                                         .addComponent(button19)
                                         .addGap(18, 18, 18)
                                         .addComponent(button18)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(button17)))
+                                        /*.addGap(18, 18, 18)
+                                        .addComponent(button17)*/))
                         .addContainerGap(24, Short.MAX_VALUE))
         );
     }
