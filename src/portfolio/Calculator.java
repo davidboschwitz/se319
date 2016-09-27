@@ -1,6 +1,8 @@
-package coms319.proj1;
+package portfolio;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -27,64 +29,162 @@ public class Calculator extends JPanel {
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
-        button5 = new JButton();
         button6 = new JButton();
-        button7 = new JButton();
         button8 = new JButton();
         button9 = new JButton();
         button10 = new JButton();
         button11 = new JButton();
-        button12 = new JButton();
         button13 = new JButton();
         button14 = new JButton();
         button15 = new JButton();
         button16 = new JButton();
-        button17 = new JButton();
         button18 = new JButton();
         button19 = new JButton();
         button20 = new JButton();
 
-        textField1.setText("textField1");
+        textField1.setText("");
 
-        button1.setText("CLEAR");
+        button1.setText("C");
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                textField1.setText("");
+                total = 0;
+            }
+        });
 
         button2.setText("7");
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button2.getText());
+            }
+        });
 
         button3.setText("4");
-
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button3.getText());
+            }
+        });
         button4.setText("1");
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button4.getText());
+            }
+        });
 
-        button5.setText("button5 ");
-
-        button6.setText("button6 ");
-
-        button7.setText("button7 ");
+        button6.setText(".");
+        button6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button6.getText());
+            }
+        });
 
         button8.setText("2");
+        button8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button8.getText());
+            }
+        });
 
         button9.setText("5");
+        button9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button9.getText());
+            }
+        });
 
         button10.setText("8");
+        button10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button10.getText());
+            }
+        });
 
-        button11.setText("button11");
-
-        button12.setText("button12");
+        button11.setText("*");
+        button11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                multiply(total);
+            }
+        });
 
         button13.setText("3");
+        button13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button13.getText());
+            }
+        });
 
         button14.setText("6");
+        button14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button14.getText());
+            }
+        });
 
         button15.setText("9");
+        button15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                update(button15.getText());
+            }
+        });
 
-        button16.setText("button16");
+        button16.setText("=");
+        button16.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finale();
+            }
+        });
+        button18.setText("/");
+        button18.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                divide(total);
+            }
+        });
 
-        button17.setText("button17");
+        button19.setText("+");
+        button19.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                add(total);
+            }
+        });
 
-        button18.setText("button18");
-
-        button19.setText("button19");
-
-        button20.setText("button20");
+        button20.setText("-");
+        button20.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do something
+                subtract(total);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -181,22 +281,118 @@ public class Calculator extends JPanel {
     private JButton button2;
     private JButton button3;
     private JButton button4;
-    private JButton button5;
     private JButton button6;
-    private JButton button7;
     private JButton button8;
     private JButton button9;
     private JButton button10;
     private JButton button11;
-    private JButton button12;
     private JButton button13;
     private JButton button14;
     private JButton button15;
     private JButton button16;
-    private JButton button17;
     private JButton button18;
     private JButton button19;
     private JButton button20;
     private JTextField textField1;
+    private double total = 0;
+    private double last = 0;
+    private int op = 0;
+    private boolean extra = false;
 
+    private void update(String value){
+        if(extra){
+            extra = false;
+            textField1.setText("");
+        }
+        textField1.setText(textField1.getText() + value);
+        total = Double.parseDouble(textField1.getText());
+    }
+
+    private void add(double total){
+       if(textField1.getText().equals("")){
+           op = 1;
+       }
+       else if(op==0){
+           last = total;
+           total = 0;
+           textField1.setText("");
+       }
+       else{
+           operation(op);
+       }
+        op = 1;
+    }
+
+    private void subtract(double total){
+        if(textField1.getText().equals("")){
+            op = 2;
+        }
+        else if(op==0){
+            last = total;
+            total = 0;
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+        }
+        op = 2;
+    }
+
+    private void multiply(double total){
+        if(textField1.getText().equals("")){
+            op = 3;
+        }
+        else if(op==0){
+            last = total;
+            total = 0;
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+        }
+        op = 3;
+    }
+
+    private void divide(double total){
+        if(textField1.getText().equals("")){
+            op = 4;
+        }
+        else if(op==0){
+            last = total;
+            total = 0;
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+        }
+        op = 4;
+    }
+
+    private void operation(int oper){
+        if(oper == 1){
+            last = last + total;
+        }
+        else if(oper == 2){
+            last = last - total;
+        }
+        else if(oper == 3){
+            last = last * total;
+        }
+        else if(oper == 4){
+            last = last / total;
+        }
+        op = 0;
+    }
+
+    private void finale(){
+        if(op==0){
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+            textField1.setText(String.valueOf(last));
+            extra = true;
+            total = last;
+        }
+    }
 }
