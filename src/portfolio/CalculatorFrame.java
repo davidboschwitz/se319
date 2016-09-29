@@ -18,7 +18,7 @@ public class CalculatorFrame extends JFrame {
     public CalculatorFrame() {
         setTitle("Calculator");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setBounds(100, 100, 275 , 300);
+        setBounds(100, 100, 275 , 400);
         setContentPane(new Calculator());
     }
 

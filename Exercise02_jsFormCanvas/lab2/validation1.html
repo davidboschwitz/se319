@@ -1,0 +1,76 @@
+
+<html>
+<head>
+    <title> "Validation Form" </title>
+    <script src="./validation1.js"></script>
+</head>
+
+<body>
+<h1>
+    Validation Form
+</h1>
+<form id="validationForm" action="" >
+    <fieldset>
+        <legend>Contact Details</legend>
+        <p id="first_p">
+            <label for="first">First Name</label>
+            <input id="first" name="first" type="text" />
+        </p>
+        <p id="last_p">
+            <label for="last">Last Name</label>
+            <input id="last" name="last" type="text" />
+
+        </p>
+        <p id="gender_p">
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="Select">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+        </p>
+        <p id="state_p">
+            <label for="state">State</label>
+            <select id="State">
+                <option value="Select">Select</option>
+                <option value="California">California</option>
+                <option value="Florida">Florida</option>
+                <option value="New York">New York</option>
+                <option value="Texas">Texas</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Washington">Washington</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Arizona">Arizona</option>
+            </select>
+        </p>
+        <p>
+            <input type="button" id="submit" name="submit" value="Submit" />
+        </p>
+    </fieldset>
+</form>
+<script>
+  var submitBtn = document.getElementById("submit");
+
+  submitBtn.onclick = function(){
+    var first = document.getElementById("first");
+    var last = document.getElementById("last");
+    var gender = document.getElementById("gender");
+    var state = document.getElementById("State");
+    var num = verify(first, last, gender, state);
+
+    if(num==4){
+        document.cookie = "u_first=" + first.value;
+        document.cookie = "u_last=" + last.value;
+        document.cookie = "u_gender=" + gender.value;
+        document.cookie = "u_state=" + state.value;
+        window.open("./validation2.html");
+    }
+  }
+
+</script>
+</body>
+</html>
+

@@ -9,10 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
-/**
- *
- * @author davidboschwitz
- */
+
 public class Calculator extends JPanel {
 
     /**
@@ -29,15 +26,19 @@ public class Calculator extends JPanel {
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
+        button5 = new JButton();
         button6 = new JButton();
+        button7 = new JButton();
         button8 = new JButton();
         button9 = new JButton();
         button10 = new JButton();
         button11 = new JButton();
+        button12 = new JButton();
         button13 = new JButton();
         button14 = new JButton();
         button15 = new JButton();
         button16 = new JButton();
+        button17 = new JButton();
         button18 = new JButton();
         button19 = new JButton();
         button20 = new JButton();
@@ -48,7 +49,6 @@ public class Calculator extends JPanel {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 textField1.setText("");
                 total = 0;
             }
@@ -58,7 +58,6 @@ public class Calculator extends JPanel {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button2.getText());
             }
         });
@@ -67,7 +66,6 @@ public class Calculator extends JPanel {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button3.getText());
             }
         });
@@ -75,17 +73,31 @@ public class Calculator extends JPanel {
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button4.getText());
             }
         });
 
-        button6.setText(".");
+        button5.setText("0");
+        button5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                update(button5.getText());
+            }
+        });
+
+        button6.setText(". ");
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button6.getText());
+            }
+        });
+
+        button7.setText("%");
+        button7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mod(total);
             }
         });
 
@@ -93,7 +105,6 @@ public class Calculator extends JPanel {
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button8.getText());
             }
         });
@@ -102,7 +113,6 @@ public class Calculator extends JPanel {
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button9.getText());
             }
         });
@@ -111,7 +121,6 @@ public class Calculator extends JPanel {
         button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button10.getText());
             }
         });
@@ -120,8 +129,15 @@ public class Calculator extends JPanel {
         button11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 multiply(total);
+            }
+        });
+
+        button12.setText("^");
+        button12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                power(total);
             }
         });
 
@@ -129,7 +145,6 @@ public class Calculator extends JPanel {
         button13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button13.getText());
             }
         });
@@ -138,7 +153,6 @@ public class Calculator extends JPanel {
         button14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button14.getText());
             }
         });
@@ -147,7 +161,6 @@ public class Calculator extends JPanel {
         button15.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 update(button15.getText());
             }
         });
@@ -159,11 +172,21 @@ public class Calculator extends JPanel {
                 finale();
             }
         });
+
+        button17.setText("+/-");
+        button17.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                total = Double.parseDouble(textField1.getText());
+                total = 0 - total;
+                textField1.setText(String.valueOf(total));
+            }
+        });
+
         button18.setText("/");
         button18.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 divide(total);
             }
         });
@@ -172,7 +195,6 @@ public class Calculator extends JPanel {
         button19.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 add(total);
             }
         });
@@ -181,7 +203,6 @@ public class Calculator extends JPanel {
         button20.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //do something
                 subtract(total);
             }
         });
@@ -199,28 +220,28 @@ public class Calculator extends JPanel {
                                                 .addComponent(button2)
                                                 .addComponent(button3)
                                                 .addComponent(button4)
-                                                //.addComponent(button5)
+                                                .addComponent(button5)
                                                 .addComponent(button1))
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button10)
                                                 .addComponent(button9)
                                                 .addComponent(button8)
-                                                //.addComponent(button7)
+                                                .addComponent(button7)
                                                 .addComponent(button6))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button15)
                                                 .addComponent(button14)
                                                 .addComponent(button13)
-                                               // .addComponent(button12)
+                                               .addComponent(button12)
                                                 .addComponent(button11))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addComponent(button20)
                                                 .addComponent(button19)
                                                 .addComponent(button18)
-                                                //.addComponent(button17)
+                                                .addComponent(button17)
                                                 .addComponent(button16))
                                         .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
@@ -241,8 +262,8 @@ public class Calculator extends JPanel {
                                                 .addComponent(button3)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(button4)
-                                                /*.addGap(18, 18, 18)
-                                              .addComponent(button5)*/)
+                                                .addGap(18, 18, 18)
+                                              .addComponent(button5))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(button6)
                                                 .addGap(18, 18, 18)
@@ -251,8 +272,8 @@ public class Calculator extends JPanel {
                                                 .addComponent(button9)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(button8)
-                                                /*.addGap(18, 18, 18)
-                                                .addComponent(button7)*/))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(button7)))
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(button11)
                                         .addGap(18, 18, 18)
@@ -261,8 +282,8 @@ public class Calculator extends JPanel {
                                         .addComponent(button14)
                                         .addGap(18, 18, 18)
                                         .addComponent(button13)
-                                        /*.addGap(18, 18, 18)
-                                        .addComponent(button12)*/)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button12))
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(button16)
                                         .addGap(18, 18, 18)
@@ -271,8 +292,8 @@ public class Calculator extends JPanel {
                                         .addComponent(button19)
                                         .addGap(18, 18, 18)
                                         .addComponent(button18)
-                                        /*.addGap(18, 18, 18)
-                                        .addComponent(button17)*/))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button17)))
                         .addContainerGap(24, Short.MAX_VALUE))
         );
     }
@@ -281,15 +302,19 @@ public class Calculator extends JPanel {
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JButton button5;
     private JButton button6;
+    private JButton button7;
     private JButton button8;
     private JButton button9;
     private JButton button10;
     private JButton button11;
+    private JButton button12;
     private JButton button13;
     private JButton button14;
     private JButton button15;
     private JButton button16;
+    private JButton button17;
     private JButton button18;
     private JButton button19;
     private JButton button20;
@@ -368,6 +393,36 @@ public class Calculator extends JPanel {
         op = 4;
     }
 
+    private void mod(double total){
+        if(textField1.getText().equals("")){
+            op = 5;
+        }
+        else if(op==0){
+            last = total;
+            total = 0;
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+        }
+        op = 5;
+    }
+
+    private void power(double total){
+        if(textField1.getText().equals("")){
+            op = 6;
+        }
+        else if(op==0){
+            last = total;
+            total = 0;
+            textField1.setText("");
+        }
+        else{
+            operation(op);
+        }
+        op = 6;
+    }
+
     private void operation(int oper){
         if(oper == 1){
             last = last + total;
@@ -379,7 +434,19 @@ public class Calculator extends JPanel {
             last = last * total;
         }
         else if(oper == 4){
-            last = last / total;
+            if(total == 0){
+                textField1.setText("divide by 0 error");
+            }
+            else{
+                last = last / total;
+            }
+
+        }
+        else if(oper == 5){
+            last = last % total;
+        }
+        else if(oper == 6){
+            last = Math.pow(last, total);
         }
         op = 0;
     }

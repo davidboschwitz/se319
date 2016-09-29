@@ -1,0 +1,50 @@
+
+<html>
+<head>
+    <title> "Contact Information" </title>
+    <script src="./validation2.js"></script>
+</head>
+
+<body>
+<h1>
+    Validation Form
+</h1>
+<form id="validationForm" action="" >
+    <fieldset>
+        <legend>Contact Details</legend>
+        <p id="email_p">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="text" />
+        </p>
+        <p id="phone_p">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" />
+
+        </p>
+        <p id="address_p">
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" />
+
+        </p>
+        <p>
+            <input type="button" id="submit" name="submit" value="Submit" />
+        </p>
+    </fieldset>
+</form>
+<script>
+  var submitBtn = document.getElementById("submit");
+
+  submitBtn.onclick = function(){
+    var first = document.getElementById("email");
+    var last = document.getElementById("phone");
+    var gender = document.getElementById("address");
+    var num = verify(email, phone, address);
+    if(num==2){
+        window.open("./map.html");
+    }
+  }
+
+</script>
+</body>
+</html>
+
